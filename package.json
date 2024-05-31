@@ -1,0 +1,92 @@
+{
+  "name": "@eienjs/adonis-api-query",
+  "description": "Easily build queries from API requests",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "type": "module",
+  "files": [
+    "build/src",
+    "build/providers",
+    "build/stubs",
+    "build/index.d.ts",
+    "build/index.js"
+  ],
+  "exports": {
+    ".": "./build/index.js",
+    "./types": "./build/src/types.js"
+  },
+  "scripts": {
+    "clean": "del-cli build",
+    "copy:templates": "copyfiles \"stubs/**/*.stub\" build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "quick:test": "node --import=./tsnode.esm.js --enable-source-maps bin/test.ts",
+    "pretest": "pnpm run lint",
+    "test": "c8 pnpm run quick:test",
+    "prebuild": "pnpm run lint && pnpm run clean",
+    "build": "tsc",
+    "postbuild": "pnpm run copy:templates",
+    "release": "np",
+    "version": "pnpm run build",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [],
+  "author": "Fernando Isidro <luffynando@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/eienjs/adonis-api-query#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eienjs/adonis-api-query.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eienjs/adonis-api-query/issues"
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^7.6.1",
+    "@adonisjs/core": "^6.9.0",
+    "@japa/expect": "^3.0.2",
+    "@japa/runner": "^3.1.4",
+    "@nodecfdi/eslint-config": "^1.6.7",
+    "@nodecfdi/prettier-config": "^1.1.1",
+    "@nodecfdi/tsconfig": "^1.5.0",
+    "@swc/core": "^1.5.24",
+    "@types/node": "^20.12.13",
+    "c8": "^9.1.0",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.57.0",
+    "eslint-define-config": "^2.1.0",
+    "np": "^10.0.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "@adonisjs/core": "^6.2.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "np": {
+    "message": "chore(release): %s",
+    "tag": "latest",
+    "branch": "main",
+    "anyBranch": false
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "prettier": "@nodecfdi/prettier-config"
+}
