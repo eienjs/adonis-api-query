@@ -13,7 +13,14 @@
 */
 
 import type ConfigureCommand from '@adonisjs/core/commands/configure';
+import { stubsRoot } from './stubs/main.js';
 
-export const configure = async function (_command: ConfigureCommand): Promise<void> {
-  // Empty
+export const configure = async function (command: ConfigureCommand): Promise<void> {
+  const codemods = await command.createCodemods();
+
+  await codemods.updateRcFile((rcFile) => {
+    rcFile.addProvider('@eienjs/adonis-api-query/api_query_provider');
+  });
+
+  await codemods.makeUsingStub(stubsRoot, 'config.stub', {});
 };

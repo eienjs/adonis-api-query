@@ -10,12 +10,15 @@
     "build/src",
     "build/providers",
     "build/stubs",
+    "build/configure.d.ts",
+    "build/configure.js",
     "build/index.d.ts",
     "build/index.js"
   ],
   "exports": {
     ".": "./build/index.js",
-    "./types": "./build/src/types.js"
+    "./types": "./build/src/types.js",
+    "./api_query_provider": "./build/providers/api_query_provider.js"
   },
   "scripts": {
     "clean": "del-cli build",
@@ -35,7 +38,16 @@
     "version": "pnpm run build",
     "prepublishOnly": "pnpm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "adonisjs",
+    "rest",
+    "api",
+    "query",
+    "lucid",
+    "filters",
+    "sorts",
+    "includes"
+  ],
   "author": "Fernando Isidro <luffynando@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/eienjs/adonis-api-query#readme",
@@ -49,6 +61,7 @@
   "devDependencies": {
     "@adonisjs/assembler": "^7.6.1",
     "@adonisjs/core": "^6.9.0",
+    "@adonisjs/lucid": "^20.6.0",
     "@japa/expect": "^3.0.2",
     "@japa/runner": "^3.1.4",
     "@nodecfdi/eslint-config": "^1.6.7",
@@ -67,14 +80,15 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "@adonisjs/core": "^6.2.0"
+    "@adonisjs/core": "^6.9.0",
+    "@adonisjs/lucid": "^20.6.0"
   },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
   },
   "np": {
-    "message": "chore(release): %s",
+    "message": "chore(release): :rocket: %s",
     "tag": "latest",
     "branch": "main",
     "anyBranch": false
