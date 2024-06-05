@@ -70,31 +70,3 @@ ModelQueryBuilder.macro('allowedFilters', function <
 
   return this;
 });
-
-declare module '@adonisjs/lucid/orm' {
-  interface ModelQueryBuilder {
-    allowedFilters<Model extends LucidModel, Attributes = ModelAttributes<InstanceType<Model>>>(
-      filters:
-        | keyof Attributes
-        | (keyof Attributes)[]
-        | AllowedFilter<Model>
-        | AllowedFilter<Model>[]
-        | string
-        | string[],
-    ): ModelQueryBuilderContract<Model>;
-  }
-}
-
-declare module '@adonisjs/lucid/types/model' {
-  interface ModelQueryBuilderContract<Model extends LucidModel, Result = InstanceType<Model>> {
-    allowedFilters<Attributes = ModelAttributes<InstanceType<Model>>>(
-      filters:
-        | keyof Attributes
-        | (keyof Attributes)[]
-        | AllowedFilter<Model>
-        | AllowedFilter<Model>[]
-        | string
-        | string[],
-    ): ModelQueryBuilderContract<Model, Result>;
-  }
-}

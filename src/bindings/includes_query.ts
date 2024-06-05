@@ -72,22 +72,3 @@ ModelQueryBuilder.macro('allowedIncludes', function <
 
   return this;
 });
-
-declare module '@adonisjs/lucid/orm' {
-  interface ModelQueryBuilder {
-    allowedIncludes<
-      Model extends LucidModel,
-      Name extends ExtractModelRelations<InstanceType<Model>>,
-    >(
-      includes: Name | Name[] | AllowedInclude<Model> | AllowedInclude<Model>[] | string | string[],
-    ): ModelQueryBuilderContract<Model>;
-  }
-}
-
-declare module '@adonisjs/lucid/types/model' {
-  interface ModelQueryBuilderContract<Model extends LucidModel, Result = InstanceType<Model>> {
-    allowedIncludes<Name extends ExtractModelRelations<InstanceType<Model>>>(
-      includes: Name | Name[] | AllowedInclude<Model> | AllowedInclude<Model>[] | string | string[],
-    ): ModelQueryBuilderContract<Model, Result>;
-  }
-}

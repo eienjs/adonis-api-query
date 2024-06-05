@@ -16,19 +16,3 @@ ModelQueryBuilder.macro('getRequest', function (this: ModelQueryBuilder) {
 
   return this.$queryBuilderRequest;
 });
-
-declare module '@adonisjs/lucid/orm' {
-  interface ModelQueryBuilder {
-    setRequest(request: Request): ModelQueryBuilder;
-    getRequest(): QueryBuilderRequest;
-
-    $queryBuilderRequest?: QueryBuilderRequest;
-  }
-}
-
-declare module '@adonisjs/lucid/types/model' {
-  interface ModelQueryBuilderContract<Model extends LucidModel, Result = InstanceType<Model>> {
-    setRequest(request: Request): ModelQueryBuilderContract<Model, Result>;
-    getRequest(): QueryBuilderRequest;
-  }
-}

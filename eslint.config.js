@@ -5,12 +5,7 @@ import { defineFlatConfig } from 'eslint-define-config';
 export default defineFlatConfig([
   ...nodecfdiConfig({ adonisjs: true }),
   {
-    files: [
-      'src/sorts/sort.ts',
-      'src/filters/filter.ts',
-      'src/includes/include.ts',
-      'src/bindings/**/*.ts',
-    ],
+    files: ['providers/api_query_provider.ts'],
     rules: {
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/no-shadow': 'off',

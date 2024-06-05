@@ -98,27 +98,3 @@ ModelQueryBuilder.macro('defaultSort', function <
 
   return this;
 });
-
-declare module '@adonisjs/lucid/orm' {
-  interface ModelQueryBuilder {
-    allowedSorts<Model extends LucidModel, Attributes = ModelAttributes<InstanceType<Model>>>(
-      sorts: keyof Attributes | (keyof Attributes)[] | AllowedSort<Model> | AllowedSort<Model>[],
-    ): ModelQueryBuilderContract<Model>;
-
-    defaultSort<Model extends LucidModel, Attributes = ModelAttributes<InstanceType<Model>>>(
-      sorts: keyof Attributes | (keyof Attributes)[] | AllowedSort<Model> | AllowedSort<Model>[],
-    ): ModelQueryBuilderContract<Model>;
-  }
-}
-
-declare module '@adonisjs/lucid/types/model' {
-  interface ModelQueryBuilderContract<Model extends LucidModel, Result = InstanceType<Model>> {
-    allowedSorts<Attributes = ModelAttributes<InstanceType<Model>>>(
-      sorts: keyof Attributes | (keyof Attributes)[] | AllowedSort<Model> | AllowedSort<Model>[],
-    ): ModelQueryBuilderContract<Model, Result>;
-
-    defaultSort<Attributes = ModelAttributes<InstanceType<Model>>>(
-      sorts: keyof Attributes | (keyof Attributes)[] | AllowedSort<Model> | AllowedSort<Model>[],
-    ): ModelQueryBuilderContract<Model, Result>;
-  }
-}
