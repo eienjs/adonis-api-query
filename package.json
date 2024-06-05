@@ -102,5 +102,6 @@
       "tests/**"
     ]
   },
-  "prettier": "@nodecfdi/prettier-config"
+  "prettier": "@nodecfdi/prettier-config",
+  "packageManager": "pnpm@9.1.4"
 }
