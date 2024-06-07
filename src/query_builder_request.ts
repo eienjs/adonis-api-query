@@ -26,7 +26,11 @@ export class QueryBuilderRequest {
     const includeParameterName: string = app.config.get('apiquery.parameters.include', 'include');
     const includeParts = this.getRequestData(includeParameterName);
 
-    // TODO: solve how to handle value different of string
+    if (Array.isArray(includeParts)) {
+      return includeParts.filter((value) => typeof value === 'string') as string[];
+    }
+
+    // TODO: solve how to handle value different of string or array
     if (typeof includeParts !== 'string') {
       return [];
     }
@@ -40,7 +44,11 @@ export class QueryBuilderRequest {
     const sortParameterName: string = app.config.get('apiquery.parameters.sort', 'sort');
     const sortParts = this.getRequestData(sortParameterName);
 
-    // TODO: solve how to handle value different of string
+    if (Array.isArray(sortParts)) {
+      return sortParts.filter((value) => typeof value === 'string') as string[];
+    }
+
+    // TODO: solve how to handle value different of string or array
     if (typeof sortParts !== 'string') {
       return [];
     }
