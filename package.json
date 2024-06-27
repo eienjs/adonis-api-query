@@ -59,23 +59,23 @@
     "url": "https://github.com/eienjs/adonis-api-query/issues"
   },
   "devDependencies": {
-    "@adonisjs/assembler": "^7.6.1",
-    "@adonisjs/core": "^6.9.0",
+    "@adonisjs/assembler": "^7.7.0",
+    "@adonisjs/core": "^6.12.1",
     "@adonisjs/lucid": "^20.6.0",
     "@japa/expect": "^3.0.2",
     "@japa/runner": "^3.1.4",
-    "@nodecfdi/eslint-config": "^1.6.7",
+    "@nodecfdi/eslint-config": "^1.7.0",
     "@nodecfdi/prettier-config": "^1.1.1",
     "@nodecfdi/tsconfig": "^1.5.0",
-    "@swc/core": "^1.5.24",
-    "@types/node": "^20.12.13",
-    "c8": "^9.1.0",
+    "@swc/core": "^1.6.5",
+    "@types/node": "^20.14.9",
+    "c8": "^10.1.2",
     "copyfiles": "^2.4.1",
     "del-cli": "^5.1.0",
     "eslint": "^8.57.0",
     "eslint-define-config": "^2.1.0",
-    "np": "^10.0.0",
-    "prettier": "^3.2.5",
+    "np": "^10.0.6",
+    "prettier": "^3.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
@@ -103,5 +103,5 @@
     ]
   },
   "prettier": "@nodecfdi/prettier-config",
-  "packageManager": "pnpm@9.1.4"
+  "packageManager": "pnpm@9.4.0"
 }
