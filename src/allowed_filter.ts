@@ -50,45 +50,41 @@ export default class AllowedFilter<Model extends LucidModel> {
   public static exact<Model extends LucidModel>(
     name: string,
     internalName?: string,
-    addRelationConstraint = true,
     arrayValueDelimiter?: string,
   ): AllowedFilter<Model> {
     AllowedFilter.setFilterArrayValueDelimiter(arrayValueDelimiter);
 
-    return new AllowedFilter(name, new FiltersExact(addRelationConstraint), internalName);
+    return new AllowedFilter(name, new FiltersExact(), internalName);
   }
 
   public static partial<Model extends LucidModel>(
     name: string,
     internalName?: string,
-    addRelationConstraint = true,
     arrayValueDelimiter?: string,
   ): AllowedFilter<Model> {
     AllowedFilter.setFilterArrayValueDelimiter(arrayValueDelimiter);
 
-    return new AllowedFilter(name, new FiltersPartial(addRelationConstraint), internalName);
+    return new AllowedFilter(name, new FiltersPartial(), internalName);
   }
 
   public static beginsWithStrict<Model extends LucidModel>(
     name: string,
     internalName?: string,
-    addRelationConstraint = true,
     arrayValueDelimiter?: string,
   ): AllowedFilter<Model> {
     AllowedFilter.setFilterArrayValueDelimiter(arrayValueDelimiter);
 
-    return new AllowedFilter(name, new FiltersBeginWithStrict(addRelationConstraint), internalName);
+    return new AllowedFilter(name, new FiltersBeginWithStrict(), internalName);
   }
 
   public static endsWithStrict<Model extends LucidModel>(
     name: string,
     internalName?: string,
-    addRelationConstraint = true,
     arrayValueDelimiter?: string,
   ): AllowedFilter<Model> {
     AllowedFilter.setFilterArrayValueDelimiter(arrayValueDelimiter);
 
-    return new AllowedFilter(name, new FiltersEndWithStrict(addRelationConstraint), internalName);
+    return new AllowedFilter(name, new FiltersEndWithStrict(), internalName);
   }
 
   public static callback<Model extends LucidModel>(
