@@ -27,7 +27,7 @@ export class QueryBuilderRequest {
     const includeParts = this.getRequestData(includeParameterName);
 
     if (Array.isArray(includeParts)) {
-      return includeParts.filter((value) => typeof value === 'string') as string[];
+      return includeParts.filter((value) => typeof value === 'string');
     }
 
     // TODO: solve how to handle value different of string or array
@@ -45,7 +45,7 @@ export class QueryBuilderRequest {
     const sortParts = this.getRequestData(sortParameterName);
 
     if (Array.isArray(sortParts)) {
-      return sortParts.filter((value) => typeof value === 'string') as string[];
+      return sortParts.filter((value) => typeof value === 'string');
     }
 
     // TODO: solve how to handle value different of string or array
