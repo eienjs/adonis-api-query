@@ -1,20 +1,25 @@
-import { type LucidModel } from '@adonisjs/lucid/types/model';
-import { type RawQueryBindings, type StrictValues } from '@adonisjs/lucid/types/querybuilder';
+import { type LucidModel, type ModelQueryBuilderContract } from '@adonisjs/lucid/types/model';
+import { type StrictValues } from '@adonisjs/lucid/types/querybuilder';
 import { type Filter } from '../types.js';
-import FiltersPartial from './filters_partial.js';
 
-export default class FiltersEndWithStrict<Model extends LucidModel>
-  extends FiltersPartial<Model>
-  implements Filter<Model>
-{
-  protected getWhereRawParameters(
+export default class FiltersEndWithStrict<Model extends LucidModel> implements Filter<Model> {
+  public invoke(
+    query: ModelQueryBuilderContract<Model, InstanceType<Model>>,
     value: StrictValues,
     property: string,
-    driver: string,
-  ): { sql: string; bindings: RawQueryBindings } {
-    return {
-      sql: `${property} LIKE ?${this.maybeSpecifyEscapeChar(driver)}`,
-      bindings: [`%${this.escapeLike(value.toString())}`],
-    };
+  ): void {
+    if (Array.isArray(value)) {
+      if (value.filter((item) => item.toString().length > 0).length === 0) {
+        return;
+      }
+
+      void query.where((subQuery) => {
+        for (const partialValue of value.filter((item) => item.toString().length > 0)) {
+          void subQuery.orWhereILike(property, `%${partialValue}`);
+        }
+      });
+    }
+
+    void query.whereILike(property, `%${value}`);
   }
 }
